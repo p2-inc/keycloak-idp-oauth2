@@ -1,16 +1,13 @@
 package io.phasetwo.keycloak.oauth2idp;
 
-import com.google.auto.service.AutoService;
 import org.keycloak.broker.oidc.OIDCIdentityProviderConfig;
 import org.keycloak.broker.provider.AbstractIdentityProviderFactory;
-import org.keycloak.broker.provider.IdentityProviderFactory;
 import org.keycloak.models.IdentityProviderModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.provider.ProviderConfigProperty;
 
 import java.util.List;
 
-@AutoService(IdentityProviderFactory.class)
 public class OAuth2IdentityProviderFactory extends AbstractIdentityProviderFactory<OAuth2IdentityProvider> {
     public static final String PROVIDER_ID = "oauth2";
 
