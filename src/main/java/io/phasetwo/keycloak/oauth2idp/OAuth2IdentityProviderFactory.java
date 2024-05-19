@@ -1,6 +1,5 @@
 package io.phasetwo.keycloak.oauth2idp;
 
-import org.keycloak.broker.oidc.OIDCIdentityProviderConfig;
 import org.keycloak.broker.provider.AbstractIdentityProviderFactory;
 import org.keycloak.models.IdentityProviderModel;
 import org.keycloak.models.KeycloakSession;
@@ -18,12 +17,12 @@ public class OAuth2IdentityProviderFactory extends AbstractIdentityProviderFacto
 
     @Override
     public OAuth2IdentityProvider create(KeycloakSession session, IdentityProviderModel model) {
-        return new OAuth2IdentityProvider(session, new OAuth2IdentityProviderConfig(model));
+        return new OAuth2IdentityProvider(session, new OAuth2ScriptedProviderConfig(model));
     }
 
     @Override
-    public OIDCIdentityProviderConfig createConfig() {
-        return new OAuth2IdentityProviderConfig();
+    public OAuth2ScriptedProviderConfig createConfig() {
+        return new OAuth2ScriptedProviderConfig();
     }
 
     @Override
@@ -33,6 +32,6 @@ public class OAuth2IdentityProviderFactory extends AbstractIdentityProviderFacto
 
     @Override
     public List<ProviderConfigProperty> getConfigProperties() {
-        return OAuth2IdentityProviderConfig.getConfigProperties();
+        return OAuth2ScriptedProviderConfig.getConfigProperties();
     }
 }
