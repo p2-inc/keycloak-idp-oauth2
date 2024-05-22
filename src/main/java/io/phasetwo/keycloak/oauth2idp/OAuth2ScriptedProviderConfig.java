@@ -47,6 +47,7 @@ public class OAuth2ScriptedProviderConfig extends OAuth2IdentityProviderConfig {
     public void setTokenUrl(String tokenUrl) {
         super.setTokenUrl(tokenUrl);
     }
+
     public void setAuthorizationUrl(String authorizationUrl) {
         super.setAuthorizationUrl(authorizationUrl);
     }
@@ -98,20 +99,33 @@ public class OAuth2ScriptedProviderConfig extends OAuth2IdentityProviderConfig {
                 .helpText(
                         "Script to compute the user identity. \n" + //
                                 " Available variables: \n" + //
-                                " httpGet - a function with 2 parameters: url, requestParams \n" + //
-                                " httpPost - a function with 2 parameters: url, requestParams \n" + //
                                 " 'realm' - the current realm.\n\n" +
+                                " 'session' - the current keycloakSession.\n\n" +
+                                " 'accessToken' - the authentication session accessToken.\n\n" +
                                 "To use: the last statement is the value returned to Java.\n" +
                                 "The result will be tested if it can be iterated upon (e.g. an array or a collection).\n" +
                                 " - If it is not, toString() will be called on the object to get the value of the attribute\n" +
-                                " - If it is, toString() will be called on all elements to return multiple attribute values.\n"//
+                                " - If it is, toString() will be called on all elements to return multiple attribute values.\n"
                 )
                 .defaultValue("/**\n" + //
                         " * Available variables: \n" + //
-                        " * httpGet - a function with 2 parameters: url, requestParams \n" + //
-                        " * httpPost - a function with 2 parameters: url, requestParams \n" + //
-                        " * realm - the current realm\n" + //
-                        " */\n\n\n//insert your code here..." //
+                        " * realm - the current realm.\n" +
+                        " * session - the current keycloakSession.\n" +
+                        " * accessToken - the authentication session accessToken.\n" +
+                        "*/\n\n" +
+                        "/** add Java dependencies */\n" +
+                        "var SimpleHttp = Java.type('org.keycloak.broker.provider.util.SimpleHttp');\n" +
+                        "var BrokeredUserProfile = Java.type('io.phasetwo.keycloak.oauth2idp.model.BrokeredUserProfile');\n\n" +
+                        "/** //insert your code here... */\n\n" +
+                        "/** Create the user profile. */\n" +
+                        " var profile = new BrokeredUserProfile();\n" +
+                        " profile.setEmail(identity.email);\n" +
+                        " profile.setUsername(identity.user_id);\n" +
+                        " profile.setLastName(identity.name);\n\n" +
+                        "/**\n" +
+                        "return profile. BrokeredUserProfile is enforced by this provider.Returning anything else will throw an exception \n" +
+                        "*/\n\n" +
+                        "profile;"
                 )
                 .type(ProviderConfigProperty.SCRIPT_TYPE)
                 .add()
