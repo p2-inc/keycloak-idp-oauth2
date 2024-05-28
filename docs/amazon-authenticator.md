@@ -3,16 +3,16 @@
 ## Contents
 
 ## Overview
-This documentation is dedicated to the use of "OAuth2" Identity provider. This section describes the SSO setup for a Amazon developer account.
+This documentation is dedicated to the use of "OAuth2" Identity provider. This section describes the SSO setup for an Amazon developer account.
 
 ## Prerequisite
 
-Create a new Amazon developer account.
+Create a new Amazon developer [account](https://developer.amazon.com/).
 
 ## Setup
 
 1. Add OAuth2 Identity Provider
-2. Populate `clientId` and `clientSecret` with the values obtained from the Amazon developer account.
+2. Populate `clientId` and `clientSecret` with the values obtained from the [Amazon developer account](https://developer.amazon.com/settings/console/securityprofile/overview.html).
 3. Add `https://www.amazon.com/ap/oa` to Authorization URL.
 4. Add `https://api.amazon.com/auth/o2/token` to Token URL.
 5. In the `Advanced Settings` section add the `profile` scope.

@@ -7,7 +7,7 @@ This documentation is dedicated to the use of "OAuth2" Identity provider. This s
 
 ## Prerequisite
 
-Create a new Dropbox developer account.
+Create a new Dropbox developer [account](https://www.dropbox.com/developers).
 
 ## Known-issue
 
@@ -35,7 +35,7 @@ Use the [openid/userinfo]("https://www.dropbox.com/developers/documentation/http
 ## Setup
 
 1. Add OAuth2 Identity Provider
-2. Populate `clientId` and `clientSecret` with the values obtained from the Amazon developer account.
+2. Populate `clientId` and `clientSecret` with the values obtained from the [Amazon developer account](https://developers.dropbox.com/oauth-guide).
 3. Add `https://www.dropbox.com/oauth2/authorize` to Authorization URL.
 4. Add `https://api.dropboxapi.com/oauth2/token` to Token URL.
 5. In the `Advanced Settings` section add the `openid profile email` scope.

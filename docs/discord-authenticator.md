@@ -9,12 +9,12 @@ Discord developer account.
 
 ## Prerequisite
 
-Create a new Amazon developer account.
+Create a new Discord developer [account](https://discord.com/developers).
 
 ## Setup
 
 1. Add OAuth2 Identity Provider
-2. Populate `clientId` and `clientSecret` with the values obtained from the Discord developer account.
+2. Populate `clientId` and `clientSecret` with the values obtained from the [Discord developer account](https://discord.com/developers/docs/topics/oauth2).
 3. Add `https://discord.com/oauth2/authorize` to Authorization URL.
 4. Add `https://discord.com/api/oauth2/token` to Token URL.
 5. In the `Advanced Settings` section add the `identify email` scope.

@@ -12,9 +12,6 @@ public class OAuth2ScriptedProviderConfig extends OAuth2IdentityProviderConfig {
     private static final String IDENTITY_SCRIPT = "identityScript";
     public static final String TOKEN_URL = "tokenUrl";
     public static final String AUTHORIZATION_URL = "authorizationUrl";
-    public static final String DISPLAY_NAME = "displayName";
-    public static final String ALIAS = "alias";
-    public static final String CLIENT_AUTHENTICATION = "clientAuthentication";
 
     public OAuth2ScriptedProviderConfig(IdentityProviderModel model) {
         super(model);
@@ -32,18 +29,6 @@ public class OAuth2ScriptedProviderConfig extends OAuth2IdentityProviderConfig {
         getConfig().put(IDENTITY_SCRIPT, script);
     }
 
-    public void setDisplayName(String displayName) {
-        super.setDisplayName(displayName);
-    }
-
-    public void setAlias(String alias) {
-        super.setAlias(alias);
-    }
-
-    public void setClientAuthMethod(String clientAuth) {
-        super.setClientAuthMethod(clientAuth);
-    }
-
     public void setTokenUrl(String tokenUrl) {
         super.setTokenUrl(tokenUrl);
     }
@@ -53,34 +38,7 @@ public class OAuth2ScriptedProviderConfig extends OAuth2IdentityProviderConfig {
     }
 
     public static List<ProviderConfigProperty> getConfigProperties() {
-        var clientAuthentications = List.of(
-                "client_secret_post",
-                "client_secret_basic",
-                "client_secret_jwt",
-                "private_key_jwt"
-        );
-
         return ProviderConfigurationBuilder.create()
-                .property()
-                .type(ProviderConfigProperty.LIST_TYPE)
-                .name(CLIENT_AUTHENTICATION)
-                .label("Client authentication")
-                .options(clientAuthentications)
-                .add()
-                .property()
-                .name(ALIAS)
-                .label("Alias")
-                .required(true)
-                .helpText(
-                        "The alias uniquely identifies an identity provider and it is also used to build the redirect uri.")
-                .type(ProviderConfigProperty.STRING_TYPE)
-                .add()
-                .property()
-                .name(DISPLAY_NAME)
-                .label("Display Name")
-                .helpText("Friendly name for Identity Providers.")
-                .type(ProviderConfigProperty.STRING_TYPE)
-                .add()
                 .property()
                 .name(AUTHORIZATION_URL)
                 .label("Authorize URL")
