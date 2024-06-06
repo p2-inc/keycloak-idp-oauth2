@@ -50,6 +50,7 @@ See:
 3.[Dropbox provider configuration](./docs/dropbox-authenticator.md)  
 4.[Github provider configuration](./docs/github-authenticator.md)  
 5.[Box provider configuration](./docs/box-authenticator.md)
+6.[Stripe connect provider configuration](./docs/stripe-connect-authenticator.md)
 
 ---
 
