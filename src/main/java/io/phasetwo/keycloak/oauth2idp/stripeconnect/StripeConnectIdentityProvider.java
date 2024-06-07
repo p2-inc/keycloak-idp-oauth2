@@ -1,4 +1,4 @@
-package io.phasetwo.keycloak.oauth2idp;
+package io.phasetwo.keycloak.oauth2idp.stripeconnect;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,25 +18,38 @@ import org.keycloak.scripting.ScriptingProvider;
 import java.util.Optional;
 
 @JBossLog
-public class OAuth2IdentityProvider extends AbstractOAuth2IdentityProvider<OAuth2ScriptedProviderConfig> implements ExchangeExternalToken {
+public class StripeConnectIdentityProvider extends AbstractOAuth2IdentityProvider<StripeConnectScriptedProviderConfig> implements ExchangeExternalToken {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public static final String DEFAULT_IDENTITY_SCRIPT = "script";
     private final String scriptCode;
 
-    public OAuth2IdentityProvider(KeycloakSession session,
-                                  OAuth2ScriptedProviderConfig config) {
+    public StripeConnectIdentityProvider(KeycloakSession session,
+                                         StripeConnectScriptedProviderConfig config) {
         super(session, config);
         scriptCode = Optional.ofNullable(config.getIdentityScript()).orElse(DEFAULT_IDENTITY_SCRIPT);
     }
 
-    @Override
-    protected BrokeredIdentityContext doGetFederatedIdentity(String accessToken) {
+    public BrokeredIdentityContext getFederatedIdentity(String response) {
+        String accessToken = this.extractTokenFromResponse(response, this.getAccessTokenResponseParameter());
+        var stripeUserId = this.extractTokenFromResponse(response, "stripe_user_id");
+
+        if (accessToken == null) {
+            throw new IdentityBrokerException("No access token available in OAuth server response: " + response);
+        } else {
+            BrokeredIdentityContext context = doGetFederatedIdentity(accessToken, stripeUserId);
+            context.getContextData().put("FEDERATED_ACCESS_TOKEN", accessToken);
+            return context;
+        }
+    }
+
+    protected BrokeredIdentityContext doGetFederatedIdentity(String accessToken,
+                                                             String stripeUserId) {
         var scriptSource = getScriptCode();
         var realm = session.getContext().getRealm();
         ScriptingProvider scripting = session.getProvider(ScriptingProvider.class);
-        ScriptModel scriptModel = scripting.createScript(realm.getId(), ScriptModel.TEXT_JAVASCRIPT, "oauth2-identity-script", scriptSource, null);
+        ScriptModel scriptModel = scripting.createScript(realm.getId(), ScriptModel.TEXT_JAVASCRIPT, "stripe-identity-script", scriptSource, null);
 
         EvaluatableScriptAdapter script = scripting.prepareEvaluatableScript(scriptModel);
         Object response = null;
@@ -44,6 +57,7 @@ public class OAuth2IdentityProvider extends AbstractOAuth2IdentityProvider<OAuth
             response = script.eval((bindings) -> {
                 bindings.put("realm", realm);
                 bindings.put("accessToken", accessToken);
+                bindings.put("stripe_user_id", stripeUserId);
                 bindings.put("session", session);
             });
 

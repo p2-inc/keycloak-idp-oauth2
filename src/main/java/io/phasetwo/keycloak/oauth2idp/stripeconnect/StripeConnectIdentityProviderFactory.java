@@ -1,6 +1,7 @@
-package io.phasetwo.keycloak.oauth2idp;
+package io.phasetwo.keycloak.oauth2idp.stripeconnect;
 
 import com.google.auto.service.AutoService;
+import io.phasetwo.keycloak.oauth2idp.OAuth2ScriptedProviderConfig;
 import org.keycloak.broker.provider.AbstractIdentityProviderFactory;
 import org.keycloak.broker.provider.IdentityProviderFactory;
 import org.keycloak.models.IdentityProviderModel;
@@ -10,17 +11,17 @@ import org.keycloak.provider.ProviderConfigProperty;
 import java.util.List;
 
 @AutoService(IdentityProviderFactory.class)
-public class OAuth2IdentityProviderFactory extends AbstractIdentityProviderFactory<OAuth2IdentityProvider> {
-    public static final String PROVIDER_ID = "oauth2";
+public class StripeConnectIdentityProviderFactory extends AbstractIdentityProviderFactory<StripeConnectIdentityProvider> {
+    public static final String PROVIDER_ID = "stripe-connect-provider";
 
     @Override
     public String getName() {
-        return "OAuth2 Identity provider";
+        return "Stripe Connect Identity provider";
     }
 
     @Override
-    public OAuth2IdentityProvider create(KeycloakSession session, IdentityProviderModel model) {
-        return new OAuth2IdentityProvider(session, new OAuth2ScriptedProviderConfig(model));
+    public StripeConnectIdentityProvider create(KeycloakSession session, IdentityProviderModel model) {
+        return new StripeConnectIdentityProvider(session, new StripeConnectScriptedProviderConfig(model));
     }
 
     @Override
