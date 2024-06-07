@@ -1,5 +1,5 @@
 > :rocket: **Try it for free** in the new Phase
-> Two [keycloak managed service](https://phasetwo.io/?utm_source=github&utm_medium=readme&utm_campaign=keycloak-magic-link).
+> Two [keycloak managed service](https://phasetwo.io/?utm_source=github&utm_medium=readme&utm_campaign=keycloak-idp-oauth2).
 > See the [announcement and demo video](https://phasetwo.io/blog/self-service/) for more information.
 
 # keycloak-idp-oauth2
@@ -43,16 +43,16 @@ features.
 
 ## Demo
 
-See:
+See the following example provider configurations:
 
-1.[Amazon provider configuration](./docs/amazon-authenticator.md)  
-2.[Discord provider configuration](./docs/discord-authenticator.md)  
-3.[Dropbox provider configuration](./docs/dropbox-authenticator.md)  
-4.[Github provider configuration](./docs/github-authenticator.md)  
-5.[Box provider configuration](./docs/box-authenticator.md)
-6.[Stripe connect provider configuration](./docs/stripe-connect-authenticator.md)
+1. [Amazon](./docs/amazon-authenticator.md)
+2. [Discord](./docs/discord-authenticator.md)
+3. [Dropbox](./docs/dropbox-authenticator.md)
+4. [Github](./docs/github-authenticator.md)
+5. [Box](./docs/box-authenticator.md)
+6. [Stripe Connect](./docs/stripe-connect-authenticator.md)
 
 ---
 
-All documentation, source code and other files in this repository are Copyright 2023 Phase Two, Inc.
+All documentation, source code and other files in this repository are Copyright 2024 Phase Two, Inc.
 
