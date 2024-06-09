@@ -41,6 +41,34 @@ identity information required for creating a keycloak user.
 When writing the script be aware of `Nashorn` has some limitations. It supports ECMAScript 5.1 and some ECMAScript 6
 features.
 
+The script must return a `BrokeredUserProfile` otherwise the Identity provider will throw an error.
+
+```java
+public class BrokeredUserProfile {
+
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String email;
+
+    private Object mappingContext;
+}
+```
+
+The `username` field of the BrokeredUserProfile is mandatory.
+
+In order to use an identity provider mapper the `mappingContext` must be populated with a JSON object containing the information required for the mapping logic.  
+A example can be seen in the Amazon identity provider [script](./docs/amazon-authenticator.md#identity-script).  
+There is no need to add the `mappingContext` if no mapping is required after obtaining the identity information.
+
+## Mappers
+
+### Attribute importer mapper
+
+Import user profile information if it exists in provider `mappingContext` JSON into the specified user attribute.
+
+![attribute-mapper](docs/assets/attribute-mapper.png)
+
 ## Demo
 
 See the following example provider configurations:

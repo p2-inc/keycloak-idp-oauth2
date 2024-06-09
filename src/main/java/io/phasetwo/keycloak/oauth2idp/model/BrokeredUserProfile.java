@@ -1,9 +1,6 @@
 package io.phasetwo.keycloak.oauth2idp.model;
 
-import com.google.common.collect.Maps;
 import lombok.Data;
-
-import java.util.Map;
 
 @Data
 public class BrokeredUserProfile {
@@ -13,5 +10,5 @@ public class BrokeredUserProfile {
     private String lastName;
     private String email;
 
-    private Map<String, Object> contextData = Maps.newHashMap();
+    private Object mappingContext;
 }
