@@ -1,6 +1,8 @@
-package io.phasetwo.keycloak.oauth2idp;
+package io.phasetwo.keycloak.oauth2idp.mappers;
 
 import com.google.auto.service.AutoService;
+import io.phasetwo.keycloak.oauth2idp.OAuth2IdentityProviderFactory;
+import io.phasetwo.keycloak.oauth2idp.stripeconnect.StripeConnectIdentityProviderFactory;
 import org.keycloak.broker.oidc.mappers.AbstractJsonUserAttributeMapper;
 import org.keycloak.broker.provider.IdentityProviderMapper;
 
@@ -8,7 +10,10 @@ import org.keycloak.broker.provider.IdentityProviderMapper;
 public class OAuth2ScriptedProviderUserAttributeMapper extends AbstractJsonUserAttributeMapper {
 
     public static final String PROVIDER_ID = "oauth2-user-attribute-mapper";
-    private static final String[] cp = new String[]{OAuth2IdentityProviderFactory.PROVIDER_ID};
+    private static final String[] cp = new String[]{
+            OAuth2IdentityProviderFactory.PROVIDER_ID,
+            StripeConnectIdentityProviderFactory.PROVIDER_ID
+    };
 
 
     public OAuth2ScriptedProviderUserAttributeMapper() {

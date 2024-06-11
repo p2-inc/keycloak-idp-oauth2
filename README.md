@@ -69,6 +69,10 @@ Import user profile information if it exists in provider `mappingContext` JSON i
 
 ![attribute-mapper](docs/assets/attribute-mapper.png)
 
+### Username Template Importer
+
+Creates the username using the user profile information if it exists in provider `mappingContext` JSON.
+
 ## Demo
 
 See the following example provider configurations:
