@@ -11,12 +11,6 @@ Correct. This overrides the identity portions of the `OIDCIdentityProvider` clas
 
 See our [motivation](./docs/motivation.md) for more information.
 
-## Quick start
-
-The easiest way to get started is our [Docker image](https://quay.io/repository/phasetwo/phasetwo-keycloak?tab=tags).
-Documentation and examples for using it are in the [phasetwo-containers](https://github.com/p2-inc/phasetwo-containers)
-repo. The most recent version of this extension is included.
-
 ## OAuth2 Scripted identity provider
 
 A standard OAuth 2.0 Identity Provider that retrieves identity information by script.
