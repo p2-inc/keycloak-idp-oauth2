@@ -1,14 +1,15 @@
 > :rocket: **Try it for free** in the new Phase
 > Two [keycloak managed service](https://phasetwo.io/?utm_source=github&utm_medium=readme&utm_campaign=keycloak-idp-oauth2).
-> See the [announcement and demo video](https://phasetwo.io/blog/self-service/) for more information.
 
 # keycloak-idp-oauth2
 
-Keycloak scripted OAuth2 identity provider implementation.
+This is an OAuth 2.0 Identity Provider implementation for Keycloak. 
 
-This extension is used in the [Phase Two](https://phasetwo.io) cloud offering, and is released here as part of its
-commitment to making its [core extensions](https://phasetwo.io/docs/introduction/open-source) open source. Please
-consult the [license](COPYING) for information regarding use.
+> But OAuth2 doesn't inherently provide identity information!
+
+Correct. This overrides the identity portions of the `OIDCIdentityProvider` class to allow retrieval of identity information by script. This allows the administrator to provide a custom script as a configuration value of the identity provider. The script is executed (js using Nashorn) with a limited scope once the authorization code flow has been executed by the user, and the IdP has returned information sufficient to authorize retrieval of identity information.
+
+See our [motivation](./docs/motivation.md) for more information.
 
 ## Quick start
 
