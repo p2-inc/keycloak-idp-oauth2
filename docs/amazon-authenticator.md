@@ -50,6 +50,7 @@ profile.setEmail(identity.email);
 profile.setUsername(identity.user_id);
 profile.setFirstName(identity.name);
 profile.setLastName(identity.name);
+profile.setMappingContext(identity);
 
 /**
 return profile

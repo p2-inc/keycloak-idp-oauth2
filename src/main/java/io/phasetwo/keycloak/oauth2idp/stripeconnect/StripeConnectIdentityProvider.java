@@ -14,6 +14,7 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.ScriptModel;
 import org.keycloak.scripting.EvaluatableScriptAdapter;
 import org.keycloak.scripting.ScriptingProvider;
+import org.keycloak.utils.StringUtil;
 
 import java.util.Optional;
 
@@ -79,17 +80,23 @@ public class StripeConnectIdentityProvider extends AbstractOAuth2IdentityProvide
     @Override
     protected BrokeredIdentityContext extractIdentityFromProfile(EventBuilder event, JsonNode profile) {
         var username = getJsonProperty(profile, "username");
+        if (StringUtil.isNullOrEmpty(username)) {
+            throw new IdentityBrokerException("BrokeredUserProfile username must not be null.");
+        }
+
         BrokeredIdentityContext user = new BrokeredIdentityContext(username);
 
         user.setUsername(username);
         user.setLastName(getJsonProperty(profile, "lastName"));
         user.setFirstName(getJsonProperty(profile, "firstName"));
         user.setEmail(getJsonProperty(profile, "email"));
-        //user.setContextData(getJsonProperty(profile, getJsonProperty(profile, "brokeredContext")));
         user.setIdpConfig(getConfig());
         user.setIdp(this);
 
-        AbstractJsonUserAttributeMapper.storeUserProfileForMapper(user, profile, getConfig().getAlias());
+        var mappingContext = profile.get("mappingContext");
+        if (mappingContext != null) {
+            AbstractJsonUserAttributeMapper.storeUserProfileForMapper(user, mappingContext, getConfig().getAlias());
+        }
 
         return user;
     }
