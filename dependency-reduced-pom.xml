@@ -97,7 +97,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.30</version>
+      <version>1.18.32</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -109,19 +109,19 @@
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-server-spi</artifactId>
-      <version>23.0.3</version>
+      <version>25.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-server-spi-private</artifactId>
-      <version>23.0.3</version>
+      <version>25.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.keycloak</groupId>
       <artifactId>keycloak-services</artifactId>
-      <version>23.0.3</version>
+      <version>25.0.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -139,11 +139,11 @@
   </dependencies>
   <properties>
     <auto-service.version>1.1.1</auto-service.version>
-    <java.version>17</java.version>
+    <java.version>21</java.version>
     <nashorn.version>15.4</nashorn.version>
-    <keycloak.version>23.0.3</keycloak.version>
+    <keycloak.version>25.0.0</keycloak.version>
     <main.java.package>io.phasetwo.keycloak.oauth2idp</main.java.package>
-    <lombok.version>1.18.30</lombok.version>
+    <lombok.version>1.18.32</lombok.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.13.2</junit.version>
   </properties>
