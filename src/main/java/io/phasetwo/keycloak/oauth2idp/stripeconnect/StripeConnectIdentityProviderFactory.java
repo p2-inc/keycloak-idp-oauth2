@@ -25,8 +25,8 @@ public class StripeConnectIdentityProviderFactory extends AbstractIdentityProvid
     }
 
     @Override
-    public OAuth2ScriptedProviderConfig createConfig() {
-        return new OAuth2ScriptedProviderConfig();
+    public StripeConnectScriptedProviderConfig createConfig() {
+        return new StripeConnectScriptedProviderConfig();
     }
 
     @Override
@@ -36,6 +36,6 @@ public class StripeConnectIdentityProviderFactory extends AbstractIdentityProvid
 
     @Override
     public List<ProviderConfigProperty> getConfigProperties() {
-        return OAuth2ScriptedProviderConfig.getConfigProperties();
+        return StripeConnectScriptedProviderConfig.getConfigProperties();
     }
 }

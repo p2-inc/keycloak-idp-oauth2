@@ -67,7 +67,7 @@ public class StripeConnectIdentityProvider extends AbstractOAuth2IdentityProvide
             throw new IdentityBrokerException("Could not obtain user profile from script.", ex);
         }
 
-        if (!(response instanceof BrokeredUserProfile profile)){
+        if (!(response instanceof BrokeredUserProfile profile)) {
             throw new IdentityBrokerException("Script response must be instance of BrokeredUserProfile.");
         }
 
@@ -84,13 +84,12 @@ public class StripeConnectIdentityProvider extends AbstractOAuth2IdentityProvide
             throw new IdentityBrokerException("BrokeredUserProfile username must not be null.");
         }
 
-        BrokeredIdentityContext user = new BrokeredIdentityContext(username);
+        BrokeredIdentityContext user = new BrokeredIdentityContext(username, getConfig());
 
         user.setUsername(username);
         user.setLastName(getJsonProperty(profile, "lastName"));
         user.setFirstName(getJsonProperty(profile, "firstName"));
         user.setEmail(getJsonProperty(profile, "email"));
-        user.setIdpConfig(getConfig());
         user.setIdp(this);
 
         var mappingContext = profile.get("mappingContext");

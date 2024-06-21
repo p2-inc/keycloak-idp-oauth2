@@ -70,15 +70,13 @@ public class OAuth2IdentityProvider extends AbstractOAuth2IdentityProvider<OAuth
             throw new IdentityBrokerException("BrokeredUserProfile username must not be null.");
         }
 
-        BrokeredIdentityContext user = new BrokeredIdentityContext(username);
+        BrokeredIdentityContext user = new BrokeredIdentityContext(username, getConfig());
 
         user.setUsername(username);
         user.setLastName(getJsonProperty(profile, "lastName"));
         user.setFirstName(getJsonProperty(profile, "firstName"));
         user.setEmail(getJsonProperty(profile, "email"));
-        user.setIdpConfig(getConfig());
         user.setIdp(this);
-
 
         var mappingContext = profile.get("mappingContext");
         if (mappingContext != null) {
