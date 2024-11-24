@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   keycloak:
-    image: quay.io/phasetwo/phasetwo-keycloak:latest
+    image: quay.io/phasetwo/phasetwo-keycloak:26.0.2
     entrypoint: ["/opt/keycloak/bin/kc.sh", "start-dev"]
     environment:
       - KEYCLOAK_ADMIN=admin
