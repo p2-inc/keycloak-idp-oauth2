@@ -1,4 +1,4 @@
-# OAuth 2.0 “Identity Provider” for Keycloak
+# OAuth 2.0 "Identity Provider" for Keycloak
 
 ## What’s the difference between OAuth 2.0 and OIDC?
 OAuth 2.0 and OpenID Connect (OIDC) are related but distinct protocols used for authentication and authorization in the context of web and mobile applications. While they share similarities, they serve different purposes:
@@ -17,16 +17,16 @@ OAuth 2.0 and OpenID Connect (OIDC) are related but distinct protocols used for 
 
 In summary, OAuth 2.0 is primarily an authorization framework that focuses on granting access tokens for limited access to resources, while OpenID Connect is an authentication layer that extends OAuth 2.0 to provide user authentication and identity information in the form of ID tokens. Often, OIDC is used in conjunction with OAuth 2.0 to handle both authentication and authorization in modern web and mobile applications.
 
-## Why do we need an OAuth 2.0 “Identity Provider”?
+## Why do we need an OAuth 2.0 "Identity Provider"?
 Users of Keycloak have the ability to create Identity Providers that are configured with the following parameters
-- “Hidden on the Login Page”
-- “Account Linking Only”
-- “Store tokens” and “Store tokens readable”
+- "Hidden on the Login Page"
+- "Account Linking Only"
+- "Store tokens" and "Store tokens readable"
 
 This is often used by developers to retrieve access tokens for APIs that have OIDC-compliant authentication flows. Following an account linking flow, the external IdP tokens can be retrieved from Keycloak (https://www.keycloak.org/docs/latest/server_admin/index.html#retrieving-external-idp-tokens) and used with the external API.
 However, this is not possible with OAuth 2.0 providers in Keycloak, despite this being a more common mechanism of authenticating and authorizing APIs.
 
-## But some of Keycloak’s “Social Identity Providers” use OAuth 2.0?
+## But some of Keycloak’s "Social Identity Providers" use OAuth 2.0?
 Correct. However, the specific social providers that Keycloak has selected implement some kind of ability to retrieve user and identity information from the provider. Through a custom implementation of those methods, Keycloak can retrieve identity information it would have otherwise taken from a standard OIDC interaction. 
 
 ## How?

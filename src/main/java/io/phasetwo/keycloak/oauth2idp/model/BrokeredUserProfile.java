@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class BrokeredUserProfile {
 
-    private String username;
-    private String firstName;
-    private String lastName;
-    private String email;
+  private String username;
+  private String firstName;
+  private String lastName;
+  private String email;
 
-    private Object mappingContext;
+  private Object mappingContext;
 }

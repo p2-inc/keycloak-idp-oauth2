@@ -15,23 +15,23 @@ See our [motivation](./docs/motivation.md) for more information.
 
 A standard OAuth 2.0 Identity Provider that retrieves identity information by script.
 
-## Installation
+### Installation
 
 1. Build the jar:
 
 ```
 mvn clean install
 ```
-
 2. Copy the jar produced in `target/` to your `providers` directory (for Quarkus) or `standalone/deployments`
    directory (for legacy) and rebuild/restart keycloak.
 
+### Releases
+
+You can also download a release jar directly from [Maven Central](https://central.sonatype.com/artifact/io.phasetwo.keycloak/keycloak-idp-oauth2).
+
 ## Implementation Notes
 
-The identity provider is persisting a script as a configuration value. This script is executed by
-the [Nashorn scripting engine]("https://www.oracle.com/technical-resources/articles/java/jf14-nashorn.html").
-The script will be executed once the authorization code flow has been executed by the user. This will retrieve the
-identity information required for creating a keycloak user.
+The identity provider is persisting a script as a configuration value. This script is executed by the [Nashorn scripting engine]("https://www.oracle.com/technical-resources/articles/java/jf14-nashorn.html"). The script will be executed once the authorization code flow has been executed by the user. This will retrieve the identity information required for creating a keycloak user.
 
 When writing the script be aware of `Nashorn` has some limitations. It supports ECMAScript 5.1 and some ECMAScript 6
 features.
