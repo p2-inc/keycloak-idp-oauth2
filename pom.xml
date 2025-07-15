@@ -7,6 +7,10 @@
   <packaging>jar</packaging>
   <version>0.2-SNAPSHOT</version>
 
+  <name>Phase Two Keycloak OAuth2 Identity provider</name>
+  <description>A standard OAuth 2.0 Identity Provider that retrieves identity information by JS script.</description>
+  <url>https://github.com/p2-inc/keycloak-idp-oauth2/</url>
+
   <parent>
     <groupId>com.github.xgp</groupId>
     <artifactId>oss-parent</artifactId>
