@@ -7,6 +7,10 @@
   <packaging>jar</packaging>
   <version>0.2-SNAPSHOT</version>
 
+  <name>Phase Two Keycloak OAuth2 Identity provider</name>
+  <description>A standard OAuth 2.0 Identity Provider that retrieves identity information by JS script.</description>
+  <url>https://github.com/p2-inc/keycloak-idp-oauth2/</url>
+
   <parent>
     <groupId>com.github.xgp</groupId>
     <artifactId>oss-parent</artifactId>
@@ -31,12 +35,12 @@
     <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <main.java.package>io.phasetwo.keycloak.oauth2idp</main.java.package>
-    <keycloak.version>26.2.5</keycloak.version>
+    <keycloak.version>26.3.0</keycloak.version>
     <nashorn.version>15.4</nashorn.version>
     <lombok.version>1.18.34</lombok.version>
     <auto-service.version>1.1.1</auto-service.version>
     <junit.version>4.13.2</junit.version>
-    <ossrh.url>https://s01.oss.sonatype.org</ossrh.url>
+    <ossrh.url>https://ossrh-staging-api.central.sonatype.com</ossrh.url>
   </properties>
 
   <scm>
