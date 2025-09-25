@@ -5,7 +5,7 @@
   <groupId>io.phasetwo.keycloak</groupId>
   <artifactId>keycloak-idp-oauth2</artifactId>
   <packaging>jar</packaging>
-  <version>0.2-SNAPSHOT</version>
+  <version>0.2</version>
 
   <parent>
     <groupId>com.github.xgp</groupId>
@@ -42,7 +42,7 @@
   <scm>
     <url>https://github.com/p2-inc/keycloak-idp-oauth2</url>
     <connection>scm:git:git@github.com:p2-inc/keycloak-idp-oauth2.git</connection>
-    <tag>HEAD</tag>
+    <tag>v0.2</tag>
   </scm>
 
   <build>
